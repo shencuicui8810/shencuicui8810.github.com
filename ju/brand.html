@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<title>聚划算</title>
+	<link rel="stylesheet" href="css/brand.css">
+	<script>
+		;(function(win,doc){
+			function change(){
+				doc.documentElement.style.fontSize=20*doc.documentElement.clientWidth/320+'px';
+			}
+			change();
+			win.addEventListener('resize',change,false);
+		})(window,document);
+	</script>
+</head>
+<body>
+	<section class="contain">
+		<header class="head">
+			<a href="index.html" class="back">返回</a>
+			<h2>品牌团</h2>
+		</header>
+		<ul class="nav clearfix">
+			<li class="nav_li"><a href="javascript:;" class="nav_a">商品</a></li>
+			<li class="nav_li"><a href="javascript:;" class="nav_a">生活</a></li>
+			<li class="nav_li"><a href="javascript:;" class="nav_a active">品牌</a></li>
+			<li class="nav_li nav_li1"><a href="javascript:;" class="nav_a">聚宝盆</a></li>
+		</ul>
+		<ul class="content">
+			<li class="content_li clearfix">
+				<div class="cont_l">
+					<p class="cont_p1">
+						<img src="img/nike.png" alt="">
+					</p>
+					<p class="cont_p2">nike</p>
+					<div class="cont_p3 clearfix">
+						<span class="cont_p3_l">3.5</span>
+						<div class="cont_p3_r">全场<b>折起</b></div>
+					</div>
+				</div>
+				<div class="cont_r">
+					<img src="images/brand_1.jpg" alt="" class="cont_img">
+				</div>
+			</li>
+			<li class="content_li clearfix">
+				<div class="cont_l">
+					<p class="cont_p1">
+						<img src="img/only.png" alt="">
+					</p>
+					<p class="cont_p2">only</p>
+					<div class="cont_p3 clearfix">
+						<span class="cont_p3_l">5.5</span>
+						<div class="cont_p3_r">全场<b>折起</b></div>
+					</div>
+				</div>
+				<div class="cont_r">
+					<img src="images/brand_2.jpg" alt="" class="cont_img">
+				</div>
+			</li>
+			<li class="content_li clearfix">
+				<div class="cont_l">
+					<p class="cont_p1">
+						<img src="img/lining.png" alt="">
+					</p>
+					<p class="cont_p2">李宁</p>
+					<div class="cont_p3 clearfix">
+						<span class="cont_p3_l">3.0</span>
+						<div class="cont_p3_r">全场<b>折起</b></div>
+					</div>
+				</div>
+				<div class="cont_r">
+					<img src="images/brand_3.jpg" alt="" class="cont_img">
+				</div>
+			</li>
+		</ul>
+	</section>
+</body>
+</html>
