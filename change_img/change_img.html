@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>change_img</title>
+<style>
+*{margin:0; padding:0; list-style:none;}
+#back_g{width: 100%;background: url(img/10.jpg) no-repeat;background-size:100%;}
+#box{width:600px; height:400px; position:relative; top:100px; left:300px; overflow:hidden;}
+ul{position:absolute; top:0; left:0; height:400px;}
+ul li{width:600px;height:400px; float:left; font-size:50px; text-align:center; line-height:400px; font-weight:bold; color:#fff;}
+ul li img{width:600px;height:400px;}
+ol{position:absolute; bottom:20px; width:400px; left:50%; margin-left:-200px;}
+ol li{float:left; width:80px; height:20px; background:#ccc; margin:10px;border-radius: 5px;}
+ol li span{float:left; width:0; height:20px; background:#f0c155;border-radius: 8px;}
+</style>
+<script src="js/move8.js"></script>
+<script>
+function addReady(fn){
+	//FF chrome
+	if(document.addEventListener){
+		document.addEventListener('DOMContentLoaded',fn,false);
+	//IE	
+	}else{
+		document.attachEvent('onreadystatechange',function(){
+			if(document.readyState == 'complete'){
+				fn();
+			}
+		});
+	}
+}
+addReady(function(){
+	var oBackG = document.getElementById('back_g');
+	//
+	function change(){
+
+		oBackG.style.height=document.documentElement.clientHeight+'px';
+	}
+	change();
+	window.onresize=window.onscroll=function(){
+		change();
+	};
+});
+window.onload = function(){
+	var oBox = document.getElementById('box');
+	var oUl = oBox.children[0];
+	var aLi = oUl.children;
+	oUl.style.width = aLi[0].offsetWidth*aLi.length+'px';
+	var aSpan = oBox.children[1].getElementsByTagName('span');
+		var iNow = 0;
+		function next(){
+			move(aSpan[iNow],{width:80},{complete:function(){
+				iNow++;
+				if(iNow == aSpan.length){
+					iNow = 0;
+				}
+				move(oUl,{left:-iNow*aLi[0].offsetWidth},{complete:function(){
+					for(var i = 0;i<aSpan.length;i++){
+						aSpan[i].style.width = 0 ;
+					}
+					next();
+				}});
+			}});
+		}
+		next();
+};
+</script>
+</head>
+<body>
+<div id="back_g">
+	<div id="box">
+		<ul>
+	    	<li><img src="img/29.jpg" alt=""></li>
+	    	<li><img src="img/35.jpg" alt=""></li>
+	    	<li><img src="img/36.jpg" alt=""></li>
+	    	<li><img src="img/37.jpg" alt=""></li>
+	    </ul>
+	    <ol>
+	    	<li><span></span></li>
+	    	<li><span></span></li>
+	    	<li><span></span></li>
+	    	<li><span></span></li>
+	    </ol>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
