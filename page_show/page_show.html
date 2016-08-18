@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>page_show</title>
+<style>
+	*{margin:0;padding:0; list-style:none;}
+	body{width: 100%;min-width: 960px;height:100%;background: url(img/bg.jpg) no-repeat;background-size:100%; }
+	span{display: block;width: 100px;height: 30px;line-height: 40px;position: absolute;top: 60px;left: 240px;font-family: '微软雅黑';cursor: pointer;}
+	#ul1{width:534px;position: absolute;top: 130px;left: 230px;}
+	#ul1 li{width:166px;height:111px; margin:5px; font-size:40px; line-height:100px; text-align:center; float:left;box-shadow: 0 0 12px #333;}
+	#ul1 .li1{background: url(img/page_show.jpg) no-repeat 0 0;}
+	#ul1 .li2{background: url(img/page_show.jpg) no-repeat -166px 0;}
+	#ul1 .li3{background: url(img/page_show.jpg) no-repeat -332px 0;}
+	#ul1 .li4{background: url(img/page_show.jpg) no-repeat 0 -111px;}
+	#ul1 .li5{background: url(img/page_show.jpg) no-repeat -166px -111px;}
+	#ul1 .li6{background: url(img/page_show.jpg) no-repeat -332px -111px;}
+	#ul1 .li7{background: url(img/page_show.jpg) no-repeat 0 -222px;}
+	#ul1 .li8{background: url(img/page_show.jpg) no-repeat -166px -222px;}
+	#ul1 .li9{background: url(img/page_show.jpg) no-repeat -332px -222px;}
+</style>
+<script src="js/move.js"></script>
+<script>
+	window.onload = function(){
+		var oBtn = document.getElementById('btn');
+		var oUl = document.getElementById('ul1');
+		var aLi = oUl.children;	
+		var aPos = [];
+		for(var i = 0;i<aLi.length;i++){
+			aPos.push({left:aLi[i].offsetLeft,top:aLi[i].offsetTop});
+		}
+		for(var i = 0;i<aLi.length;i++){
+			aLi[i].style.position = 'absolute';
+			aLi[i].style.left = aPos[i].left+'px';
+			aLi[i].style.top = aPos[i].top+'px';
+			aLi[i].style.margin = 0;
+		}
+		var bOk = false;
+		oBtn.onclick = function(){
+			if(bOk){return;}
+			bOk = true;
+			for(var i = 0;i<aLi.length;i++){
+				(function(index){
+					setTimeout(function(){
+						move(aLi[index],{left:0,top:0,width:0,height:0,opacity:0},{complete:function(){
+							if(index == aLi.length-1){
+								for(var i = aLi.length-1;i>=0;i--){
+									(function(index){
+										setTimeout(function(){
+											move(aLi[index],{left:aPos[index].left,top:aPos[index].top,width:166,height:111,opacity:1},{
+					complete:function(){
+					if(index == 0){
+						bOk =false;
+					}	
+				}								
+												
+			});
+											
+										},(aLi.length-1-i)*100);
+										
+									})(i);
+									
+								}
+								
+							}	
+						}});
+					},i*100);
+				})(i);
+			}
+		};
+	};
+</script>
+</head>
+<body>
+	<span id="btn">点我看看啊！</span>
+	<ul id="ul1">
+    	<li class="li1"></li>
+    	<li class="li2"></li>
+    	<li class="li3"></li>
+    	<li class="li4"></li>
+    	<li class="li5"></li>
+    	<li class="li6"></li>
+    	<li class="li7"></li>
+    	<li class="li8"></li>
+    	<li class="li9"></li>
+    </ul>
+</body>
+</html>
+
+
+
+
+
