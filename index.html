@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My website</title>
+	<link rel="stylesheet" href="css/base.css"/>
+	<link rel="stylesheet" href="css/index.css"/>
+	<script src="js/index.js"></script>
+	<script src="js/move.js"></script>
+	<script>
+	window.onload=function(){
+		//文字时钟
+		var timer =null;
+		time();
+		clearInterval(timer);
+		timer = setInterval(time,1000);
+
+		//nav
+		var oNav = document.getElementById('nav');
+		var aLi1 = oNav.getElementsByTagName('li');
+		tab(aLi1);
+		var oBackA = document.getElementById('back_a');
+		function build(){
+			alert('建设中...');
+		}
+		oBackA.addEventListener('click',build,false);
+
+		//works
+		var oWorkUl = document.getElementById('work_ul');	
+		var aLi = oWorkUl.getElementsByTagName('li');
+		for(var i=0;i<aLi.length;i++){
+			through(aLi[i]);
+		}
+		
+		//skill
+		var oSkillInstro=document.getElementById('skill_intro');
+		createCircle(oSkillInstro);
+		var aSpan=oSkillInstro.getElementsByTagName('span');
+		for(var i=0;i<aSpan.length;i++){
+			aSpan[i].style.backgroundRepeat='no-repeat';
+			aSpan[i].style.backgroundPosition='center';
+			if(window.navigator.userAgent.indexOf('MSIE 8.0')!=-1){
+				aSpan[i].style.backgroundSize='cover';
+			}else{
+				aSpan[i].style.backgroundSize='100%';
+			}
+		}
+		if(window.navigator.userAgent.indexOf('MSIE 8.0')!=-1){
+			aSpan[0].style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src="img/js.png",sizingMethod="scale");';
+			aSpan[1].style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src="img/html.png",sizingMethod="scale");';
+			aSpan[2].style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src="img/css.png",sizingMethod="scale");';
+			aSpan[3].style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src="img/ps.png",sizingMethod="scale");';
+			aSpan[4].style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src="img/dw.png",sizingMethod="scale");';
+			aSpan[5].style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src="img/sublime.png",sizingMethod="scale");';
+			aSpan[6].style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src="img/h5.png",sizingMethod="scale");';
+			aSpan[7].style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(src="img/css3.png",sizingMethod="scale");';
+		}else{
+			aSpan[0].style.backgroundImage='url(img/js.png)';
+			aSpan[1].style.backgroundImage='url(img/html.png)';
+			aSpan[2].style.backgroundImage='url(img/css.png)';
+			aSpan[3].style.backgroundImage='url(img/ps.png)';
+			aSpan[4].style.backgroundImage='url(img/dw.png)';
+			aSpan[5].style.backgroundImage='url(img/sublime.png)';
+			aSpan[6].style.backgroundImage='url(img/h5.png)';
+			aSpan[7].style.backgroundImage='url(img/css3.png)';
+		}	
+	};
+	</script>
+</head>
+<body>
+	<div class="header">
+		<!--导航-->
+		<div class="head_nav">
+			<p id="time" class="time"></p>
+			<ul class="nav clearfix" id="nav">
+				<li class="nav_li active"><a href="#banner_img" class="nav_a"><span class="nav_span">首页</span><b class="nav_b">HOME</b></a></li>
+				<li class="nav_li"><a href="#about_me" class="nav_a"><span class="nav_span">关于我</span><b class="nav_b">About Me</b></a></li>
+				<li class="nav_li"><a href="#works" class="nav_a"><span class="nav_span">我的作品</span><b class="nav_b">Works</b></a></li>
+				<li class="nav_li"><a href="#contact" class="nav_a"><span class="nav_span">与我联系</span><b class="nav_b">Contanct Me</b></a></li>
+			</ul>
+		</div>
+		<!--banner-->
+		<div class="banner">
+			<img src="img/banner.jpg" alt="" class="banner_img" id="banner_img">
+			<div class="back_1"></div>
+			<div class="back_2">
+				<p class="back_p1">Welcome to</p>
+				<p class="back_p2">my website</p>
+				<p class="back_p3"></p>
+				<a href="javascript:;" class="back_a" id="back_a">了解更多</a>
+			</div>
+		</div>
+	</div>
+	<div class="main">
+		<!--works-->
+		<div class="works">
+			<div class="tittle" id="works">
+				<span class="tittle_span">我的作品</span>
+				<b class="tittle_b"><i class="tittle_i">W</i>orks</b>
+			</div>
+			<div class="work_cont">
+				<ul class="work_ul clearfix" id="work_ul">
+					<li class="work_li" id="work_li1"> 
+						<img src="img/jd.jpg" alt="" class="work_img">
+						<div class="work_s" id="work_s">
+							<a href="jd/index.html" target="_blank" class="work_a"></a>
+						</div>
+						<div class="work_text">html+css</div>
+					</li>
+					<li class="work_li">
+						<div class="work_text">javascript</div>
+						<div class="work_s"><a href="page_show/page_show.html" target="_blank" class="work_a"></a></div>
+						<img src="img/page_show.jpg" alt="" class="work_img">
+					</li>
+					<li class="work_li">
+						<img src="img/3D_card.jpg" alt="" class="work_img">
+						<div class="work_s"><a href="3D_card/3D_card.html" target="_blank" class="work_a"></a></div>
+						<div class="work_text">h5+css3</div>
+					</li>
+					<li class="work_li">
+						<div class="work_text">移动端</div>
+						<div class="work_s"><a href="ju/index.html" target="_blank" class="work_a"></a></div>
+						<img src="img/ju.jpg" alt="" class="work_img">
+					</li>
+					<li class="work_li">
+						<img src="img/fish_game.jpg" alt="" class="work_img">
+						<div class="work_s">
+							<a href="fish_game/demo.html" target="_blank" class="work_a"></a>
+						</div>
+						<div class="work_text">canvas</div>
+					</li>
+					<li class="work_li">
+						<div class="work_text">h5+css3</div>
+						<div class="work_s"><a href="3D_show/3D_show.html" target="_blank" class="work_a"></a></div>
+						<img src="img/3D_show.jpg" alt="" class="work_img">
+					</li>
+					<li class="work_li">
+						<img src="img/change_img.jpg" alt="" class="work_img">
+						<div class="work_s"><a href="change_img/change_img.html" target="_blank" class="work_a"></a></div>
+						<div class="work_text">javascript</div>
+					</li>
+					<li class="work_li">
+						<div class="work_text">html+css</div>
+						<div class="work_s"><a href="soul/index.html" target="_blank" class="work_a"></a></div>
+						<img src="img/soul.jpg" alt="" class="work_img">
+					</li>
+				</ul>
+			</div>	
+		</div>
+		<!--about me-->
+		<div class="introduce">
+			<div class="self">
+				<div class="tittle" id="about_me">
+					<span class="tittle_span">关于我</span>
+					<b class="tittle_b"><i class="tittle_i">A</i>bout me</b>
+				</div>
+				<div class="self_intro">
+					<img src="img/about_me.jpg" alt="" class="self_intro_img">
+					<div class="self_intro_inf clearfix">
+						<div class="self_intro_inf_l">
+							<h2 class="self_h2 clearfix">
+								<img src="img/shencuicui.png" alt="" class="self_h2_img">
+								<span class="self_h2_span">基本资料</span>
+							</h2>
+							<ul class="self_ul">
+								<li class="self_li"><b class="self_li_b"></b>姓名：沈翠翠</li>
+								<li class="self_li"><b class="self_li_b"></b>出生日期：1988年10月</li>
+								<li class="self_li"><b class="self_li_b"></b>毕业学校：上海工程技术大学</li>
+								<li class="self_li"><b class="self_li_b"></b>学历：硕士研究生</li>
+								<li class="self_li"><b class="self_li_b"></b>邮箱：scczyl@163.com</li>
+							</ul>
+						</div>
+						<img src="img/about_me1.jpg" alt="" class="self_intro_inf_r">
+					</div>
+				</div>
+			</div>
+			<div class="skill">
+				<div class="tittle">
+					<span class="tittle_span">技能</span>
+					<b class="tittle_b"><i class="tittle_i">S</i>kill</b>
+				</div>
+				<div class="skill_in">
+					<div class="skill_intro" id="skill_intro">
+						<div class="skill_intro_center">前端</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="foot1">
+			<img src="img/contact.jpg" alt="" class="foot1_img">
+			<div class="foot1_back"></div>
+			<div class="foot1_back1">
+				<h2 class="foot1_h2" id="contact">
+					<span class="foot1_s1">与 我 联 系</span>
+					<span class="foot1_s2">C O N T A C T</span>
+				</h2>
+				<div class="foot1_div clearfix">
+					<img src="img/erweima.png" alt="" class="foot1_img1">
+					<ul class="foot1_ul">
+						<li class="foot1_li">TEL : 17710267163</li>
+						<li class="foot1_li">QQ : 875970399</li>
+						<li class="foot1_li">WeChat : 13916195207</li>
+						<li class="foot1_li foot1_li_spe">Adress : 北京丰台区长辛店张郭庄小区</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="foot2">Copyright&copy;2016</div>
+	</div>
+</body>
+</html>
